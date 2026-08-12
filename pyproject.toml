@@ -1,0 +1,36 @@
+[project]
+name = "smart-todo"
+version = "0.1.0"
+description = "AI-driven todo list"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+smart-todo = "smart_todo:main"
+
+[build-system]
+requires = ["uv_build>=0.12.3,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "mypy>=2.3.0",
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.16.2",
+]
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "SIM", "UP"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src", "tests"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=smart_todo --cov-report=term-missing --cov-fail-under=100"
+testpaths = ["tests"]
